@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/r108154itpc/public_html/tmmgarage
+    - /bin/git clone https://github.com/dmmarian/tmmgarage.git $DEPLOYPATH
+    - /bin/cp $DEPLOYPATH/wp-config-sample.php $DEPLOYPATH/wp-config.php
+    - sed -i "s/r108154itpc_tmmgarage/g" $DEPLOYPATH/wp-config.php
+    - sed -i "s/localhost:3306/localhost/g" $DEPLOYPATH/wp-config.php
+    - cd $DEPLOYPATH && /bin/git submodule init && /bin/git submodule update
